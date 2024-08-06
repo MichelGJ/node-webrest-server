@@ -5,8 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsnd --respawn --clear src/app.ts",
-    "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/app.js"
+    "build": "rimraf ./dist && tsc && npm run prisma:migrate:prod",
+    "start": "npm run build && node dist/app.js",
+    "prisma:migrate:prod": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
@@ -20,8 +21,10 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@prisma/client": "^5.18.0",
     "dotenv": "^16.4.5",
     "env-var": "^7.5.0",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "prisma": "^5.18.0"
   }
 }
